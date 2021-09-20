@@ -1,0 +1,44 @@
+@model MvcMovie.Models.Student
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Student</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="studentID" />
+            <div class="form-group">
+                <label asp-for="studentName" class="control-label"></label>
+                <input asp-for="studentName" class="form-control" />
+                <span asp-validation-for="studentName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="birthDay" class="control-label"></label>
+                <input asp-for="birthDay" class="form-control" />
+                <span asp-validation-for="birthDay" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Countryside" class="control-label"></label>
+                <input asp-for="Countryside" class="form-control" />
+                <span asp-validation-for="Countryside" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
