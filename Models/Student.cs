@@ -5,6 +5,7 @@ namespace MvcMovie.Models
 {
     public class Student
     {
+        [Key]
         public int studentID { get; set; }
         public string studentName { get; set; }
 
@@ -12,4 +13,4 @@ namespace MvcMovie.Models
         public DateTime birthDay { get; set; }
         public string Countryside { get; set; }
     }
-}
+} 
