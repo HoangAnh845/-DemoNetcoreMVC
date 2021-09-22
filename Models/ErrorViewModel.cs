@@ -1,4 +1,5 @@
 using System;
+using DemoMVC.Data;
 
 namespace DemoMVC.Models
 {
