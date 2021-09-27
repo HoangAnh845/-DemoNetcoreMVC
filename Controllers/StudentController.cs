@@ -19,17 +19,30 @@ namespace DemoMVC.Controllers
         }
 
         // GET: Student
-        public async Task<IActionResult> Index(string searchString)
+            public async Task<IActionResult> Index(string STstudentName , string searchString)
         {
-             var Student = from m in _context.Student
-                 select m;
+            IQueryable<string> genreQuery = from m in _context.Student
+                                    orderby m.studentName
+                                    select m.studentName;
+            var Student = from m in _context.Student
+                        select m;
 
-                if (!String.IsNullOrEmpty(searchString))
-                {
-                    Student = Student.Where(s => s.studentName.Contains(searchString));
-                }
-            return View(await _context.Student.ToListAsync());
-           
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                Student = Student.Where(s => s.studentName.Contains(searchString));
+            }
+            if (!string.IsNullOrEmpty(STstudentName))
+            {
+                Student = Student.Where(x => x.studentName == STstudentName);
+            }
+
+            var movieGenreVM = new MovieGenreViewModel
+            {
+                studentName = new SelectList(await genreQuery.Distinct().ToListAsync()),
+                Student = await Student.ToListAsync()
+            };
+            return View(movieGenreVM);
+            // return View(await Student.ToListAsync());
         }
 
         // GET: Student/Details/5

@@ -1,5 +1,5 @@
-@model IEnumerable<DemoMVC.Models.Student>
-
+@* @model IEnumerable<DemoMVC.Models.Student> *@
+@model DemoMVC.Models.MovieGenreViewModel
 
 @{
     ViewData["Title"] = "Index";
@@ -12,7 +12,10 @@
 </p>
 <form asp-controller="Student" asp-action="Index">
     <p>
-        studentID:  <input type="text" asp-for="SearchString" />
+        <select asp-for="STstudentName" asp-items="Model.studentName">
+            <option value="">All</option>
+        </select>
+        studentName: <input type="text" name="SearchString" />
         <input type="submit" value="Filter" />
     </p>
 </form>
@@ -20,22 +23,22 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.studentID)
+                @Html.DisplayNameFor(model => model.Student[0].studentID)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.studentName)
+                @Html.DisplayNameFor(model => model.Student[0].studentName)
             </th>
             <th>
-                @Html.DisplayNameFor(model =>  model.birthDay)
+                @Html.DisplayNameFor(model => model.Student[0].birthDay)
             </th>
             <th>
-                @Html.DisplayNameFor(model =>  model.Countryside)
+                @Html.DisplayNameFor(model => model.Student[0].Countryside)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.Student) {
         <tr>
              <td>
                 @Html.DisplayFor(modelItem => item.studentID)
