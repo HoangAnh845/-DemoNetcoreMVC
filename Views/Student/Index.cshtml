@@ -1,5 +1,6 @@
 @model IEnumerable<DemoMVC.Models.Student>
 
+
 @{
     ViewData["Title"] = "Index";
 }
@@ -9,17 +10,26 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+<form asp-controller="Student" asp-action="Index">
+    <p>
+        studentID:  <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
 <table class="table">
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.studentID)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.studentName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.birthDay)
+                @Html.DisplayNameFor(model =>  model.birthDay)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Countryside)
+                @Html.DisplayNameFor(model =>  model.Countryside)
             </th>
             <th></th>
         </tr>
@@ -27,6 +37,9 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+             <td>
+                @Html.DisplayFor(modelItem => item.studentID)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.studentName)
             </td>
