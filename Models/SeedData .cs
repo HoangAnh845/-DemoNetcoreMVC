@@ -26,6 +26,7 @@ namespace DemoMVC.Models
                         studentName = "Uông Hoàng Anh",
                         birthDay = DateTime.Parse("2000-4-18"),
                         Countryside = "Ha Noi",
+                        // Rating = "A",
                     },
 
                     new Student
@@ -34,6 +35,7 @@ namespace DemoMVC.Models
                         studentName = "Comedy",
                         birthDay = DateTime.Parse("1984-3-13"),
                         Countryside = "Ha Noi",
+                        // Rating = "A",
                     },
 
                     new Student
@@ -42,6 +44,7 @@ namespace DemoMVC.Models
                         studentName = "Comedy",
                         birthDay = DateTime.Parse("1986-2-23"),
                         Countryside = "Ha Noi",
+                        // Rating = "A",
                     },
 
                     new Student
@@ -50,6 +53,7 @@ namespace DemoMVC.Models
                         studentName = "Western",
                         birthDay = DateTime.Parse("1959-4-15"),
                         Countryside = "Ha Noi",
+                        // Rating = "A",
                     }
                 );
                 context.SaveChanges();

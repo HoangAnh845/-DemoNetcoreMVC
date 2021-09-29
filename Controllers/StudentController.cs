@@ -76,12 +76,23 @@ namespace DemoMVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("studentID,studentName,birthDay,Countryside")] Student student)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(student);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
+            try{
+                //nếu ràng buộc ở student thỏa mãn
+                if (ModelState.IsValid)
+                {
+                    _context.Add(student);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }  
+                }
+           catch
+                {
+                    //viết những lệnh có thể xử lý lỗi phát sinh 
+                    ModelState.AddModelError("","Mất kết nối");
+                    return RedirectToAction(nameof(Index));
+
+                }
+            //nếu ràng buộc không thỏa mãn thì trả về view create kèm thoe thông tin student đã nhập 
             return View(student);
         }
 
